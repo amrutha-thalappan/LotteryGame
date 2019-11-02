@@ -287,8 +287,8 @@ public class WelcomeTolo extends javax.swing.JFrame {
                         Integer.parseInt(number2), 
                         Integer.parseInt(number3), 
                         Integer.parseInt(number4), 
-                        Integer.parseInt(betAmount), 
-                        Integer.parseInt(luckyNumber));
+                        Integer.parseInt(luckyNumber), 
+                        Integer.parseInt(betAmount));
                     gainAmount = tolo.getGain(isSuperBet, superBet);
                 }
 
