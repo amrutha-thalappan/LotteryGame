@@ -44,8 +44,12 @@ public class Tolo {
         Random rand = new Random(); 
         for (int i = 0; i < 4; i++) {
             int randNumber = rand.nextInt(max - min + 1) + min;
-            System.out.println(randNumber);
-            drawnNumbers.add(randNumber);
+            if(drawnNumbers.contains(randNumber)){
+                i--;
+            }else{
+                drawnNumbers.add(randNumber);
+                System.out.println(randNumber);
+            }
         }
         
         if(isSuperBet){
@@ -90,7 +94,9 @@ public class Tolo {
         numbers.add(n2);
         numbers.add(n3);
         numbers.add(n4);  
-        checkDuplicates(numbers);
+        if(checkDuplicates(numbers)){
+            return null;
+        }
         bet = new Bet(numbers, betMoney);
         return bet;
     }
@@ -102,18 +108,19 @@ public class Tolo {
         numbers.add(n2);
         numbers.add(n3);
         numbers.add(n4);
-        checkDuplicates(numbers);
+        if(checkDuplicates(numbers)){
+            return null;
+        }
         superBet = new SuperBet(luckyN, numbers, betMoney);
         return superBet;
     }
     
-    public void checkDuplicates(ArrayList numbers){
+    public boolean checkDuplicates(ArrayList numbers){
         Set<Integer> set = new HashSet<Integer>(numbers);
         if(set.size() < numbers.size()){
-            JOptionPane.showMessageDialog(null,
-                          "Duplicate numbers entered", "Error Message",
-                          JOptionPane.ERROR_MESSAGE);
+            return true;
         }
+        return false;
     }
     
 }

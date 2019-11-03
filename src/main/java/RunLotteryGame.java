@@ -22,10 +22,10 @@ public class RunLotteryGame {
         
         var welcomeTolo = new WelcomeTolo();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-  int height = screenSize.height;
-  int width = screenSize.width;
-  welcomeTolo.setSize(width/2, height/2);
-  welcomeTolo.setLocationRelativeTo(null);
+        int height = screenSize.height;
+        int width = screenSize.width;
+        welcomeTolo.setSize(width/2, height/2);
+        welcomeTolo.setLocationRelativeTo(null);
         welcomeTolo.setTitle("Lottery Game");
         welcomeTolo.setVisible(true);
     

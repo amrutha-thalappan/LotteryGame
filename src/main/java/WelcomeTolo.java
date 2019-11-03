@@ -294,14 +294,26 @@ public class WelcomeTolo extends javax.swing.JFrame {
                     Integer.parseInt(number4), 
                     Integer.parseInt(luckyNumber), 
                     Integer.parseInt(betAmount));
-                gainAmount = tolo.getGain(isSuperBet, superBet);
+                if(superBet != null){
+                    gainAmount = tolo.getGain(isSuperBet, superBet);
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                          "Duplicate numbers entered", "Error Message",
+                          JOptionPane.ERROR_MESSAGE);
+                }
             }else{
                 bet = tolo.createBet(Integer.parseInt(number1), 
                         Integer.parseInt(number2), 
                         Integer.parseInt(number3), 
                         Integer.parseInt(number4),
                         Integer.parseInt(betAmount));
-                gainAmount = tolo.getGain(isSuperBet, bet);
+                if(bet != null){
+                    gainAmount = tolo.getGain(isSuperBet, bet);
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                          "Duplicate numbers entered", "Error Message",
+                          JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
         if(gainAmount != 0){
