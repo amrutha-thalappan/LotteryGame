@@ -3,8 +3,11 @@ import java.awt.Dialog;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -86,7 +89,8 @@ public class Tolo {
         numbers.add(n1);
         numbers.add(n2);
         numbers.add(n3);
-        numbers.add(n4);        
+        numbers.add(n4);  
+        checkDuplicates(numbers);
         bet = new Bet(numbers, betMoney);
         return bet;
     }
@@ -97,9 +101,19 @@ public class Tolo {
         numbers.add(n1);
         numbers.add(n2);
         numbers.add(n3);
-        numbers.add(n4);        
+        numbers.add(n4);
+        checkDuplicates(numbers);
         superBet = new SuperBet(luckyN, numbers, betMoney);
         return superBet;
+    }
+    
+    public void checkDuplicates(ArrayList numbers){
+        Set<Integer> set = new HashSet<Integer>(numbers);
+        if(set.size() < numbers.size()){
+            JOptionPane.showMessageDialog(null,
+                          "Duplicate numbers entered", "Error Message",
+                          JOptionPane.ERROR_MESSAGE);
+        }
     }
     
 }

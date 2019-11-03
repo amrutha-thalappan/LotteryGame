@@ -269,29 +269,32 @@ public class WelcomeTolo extends javax.swing.JFrame {
         String number2 = jTextField2.getText();
         String number3 = jTextField3.getText();
         String number4 = jTextField4.getText();
-        if(number1.isEmpty()|| number2.isEmpty()|| number3.isEmpty()|| number4.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Number cannot be null");
-        }
         String betAmount = jTextField5.getText();
-        if(betAmount.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please enter bet amount");
+        String luckyNumber = jTextField6.getText();
+        if(number1.isEmpty()|| number2.isEmpty()|| number3.isEmpty()|| number4.isEmpty()){
+            JOptionPane.showMessageDialog(null,
+                          "Number cannot be null", "Error Message",
+                          JOptionPane.ERROR_MESSAGE);
+        } else if(isSuperBet && luckyNumber.isEmpty()){
+            JOptionPane.showMessageDialog(null,
+                              "Lucky number must not be empty for super bet", "Error Message",
+                              JOptionPane.ERROR_MESSAGE);           
+        }else if(betAmount.isEmpty()){
+                JOptionPane.showMessageDialog(null,
+                              "Please enter bet amount", "Error Message",
+                              JOptionPane.ERROR_MESSAGE);
         }
+        
         
         if(!number1.isEmpty()&& !number2.isEmpty()&&!number3.isEmpty() && !number4.isEmpty()&&!betAmount.isEmpty()){
             if(isSuperBet){
-                String luckyNumber = jTextField6.getText();
-                if(luckyNumber.isEmpty()){
-                    JOptionPane.showMessageDialog(null, "Lucky number must not be empty for super bet");
-                }else {
-                    superBet = tolo.createBet(Integer.parseInt(number1), 
-                        Integer.parseInt(number2), 
-                        Integer.parseInt(number3), 
-                        Integer.parseInt(number4), 
-                        Integer.parseInt(luckyNumber), 
-                        Integer.parseInt(betAmount));
-                    gainAmount = tolo.getGain(isSuperBet, superBet);
-                }
-
+                superBet = tolo.createBet(Integer.parseInt(number1), 
+                    Integer.parseInt(number2), 
+                    Integer.parseInt(number3), 
+                    Integer.parseInt(number4), 
+                    Integer.parseInt(luckyNumber), 
+                    Integer.parseInt(betAmount));
+                gainAmount = tolo.getGain(isSuperBet, superBet);
             }else{
                 bet = tolo.createBet(Integer.parseInt(number1), 
                         Integer.parseInt(number2), 
